@@ -33,8 +33,8 @@ const MoodSongs = () => {
                             <p>{song.artist}</p>
                         </div>
                         <div className="play-pose-btn">
-                            <i class="ri-pause-circle-fill"></i>
-                            <i class="ri-play-circle-fill"></i>
+                            <i className="ri-pause-circle-fill"></i>
+                            <i className="ri-play-circle-fill"></i>
                         </div>
                     </div>
                 ))}
