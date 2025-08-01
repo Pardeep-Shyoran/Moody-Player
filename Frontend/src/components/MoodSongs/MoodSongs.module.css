@@ -1,4 +1,4 @@
-.moodSongs{
+/* .moodSongs{
     background: #2f2f2f;
     border-radius: 1rem;
 	width: 69%;
@@ -26,4 +26,80 @@
     justify-content: space-between;
     padding: 1rem 2rem;
 }
+ */
 
+.moodSongs {
+	background: #2f2f2f;
+	border-radius: 1rem;
+	width: 69%;
+	margin: auto; /* Center on larger screens */
+	transition: width 0.3s;
+}
+
+.songHead {
+	margin: 12px;
+	font-size: 2rem;
+	text-align: center;
+}
+
+.songList {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	margin-bottom: 20px;
+}
+
+.songBar {
+	background: #1a1a1a;
+	width: 90%;
+	border-radius: 1rem;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 1rem 2rem;
+	box-sizing: border-box;
+	transition: padding 0.3s, width 0.3s;
+}
+
+/* Tablets (screen <= 900px) */
+@media (max-width: 900px) {
+	.moodSongs {
+		width: 90%;
+		border-radius: 0.75rem;
+	}
+	.songHead {
+		font-size: 1.5rem;
+	}
+	.songBar {
+		width: 96%;
+		padding: 0.8rem 1.2rem;
+		border-radius: 0.8rem;
+	}
+}
+
+/* Mobiles (screen <= 600px) */
+@media (max-width: 600px) {
+	.moodSongs {
+		width: 100%;
+		border-radius: 0.5rem;
+		padding: 0 2vw;
+	}
+	.songHead {
+		font-size: 1.15rem;
+		margin: 8px;
+	}
+	.songList {
+		gap: 6px;
+		margin-bottom: 12px;
+	}
+	.songBar {
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		padding: 0.7rem 0.7rem;
+		border-radius: 0.7rem;
+		font-size: 0.95rem;
+	}
+}
