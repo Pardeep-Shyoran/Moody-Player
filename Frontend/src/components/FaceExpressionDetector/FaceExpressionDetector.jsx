@@ -63,7 +63,7 @@ const FaceExpressionDetector = ({ setSongs }) => {
     useEffect(() => {
         if (dominantExpression && dominantExpression !== 'No Face Detected.') {
             axios
-                .get(`http://localhost:3000/songs?mood=${dominantExpression}`)
+                .get(`${import.meta.env.VITE_GET_SONGS_API_URL}?mood=${dominantExpression}`)
                 .then(response => {
                     // console.log('Fetched songs:', response.data);
                     setSongs(response.data.song || []); // fall back to empty array

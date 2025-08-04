@@ -3,9 +3,9 @@ import styles from "./MoodSongs.module.css";
 
 const MoodSongs = ({ Songs }) => {
     const [isPlayingIndex, setIsPlayingIndex] = useState(null);
+    const [progress, setProgress] = useState(0);
     const audioRef = useRef(null);
 
-    // Reset player on Songs change
     useEffect(() => {
         if (audioRef.current) {
             audioRef.current.pause();
@@ -13,10 +13,26 @@ const MoodSongs = ({ Songs }) => {
             audioRef.current.src = "";
         }
         setIsPlayingIndex(null);
+        setProgress(0);
     }, [Songs]);
 
+    // Track progress
+    useEffect(() => {
+        let interval;
+        if (isPlayingIndex !== null) {
+            interval = setInterval(() => {
+                const audio = audioRef.current;
+                if (audio && audio.duration) {
+                    setProgress(audio.currentTime / audio.duration);
+                }
+            }, 300);
+        }
+        return () => clearInterval(interval);
+    }, [isPlayingIndex]);
+
     const handlePlayPause = (index) => {
-        if (!audioRef.current) return;
+        const selectedSong = Songs[index];
+        if (!audioRef.current || !selectedSong?.audio) return;
 
         if (isPlayingIndex === index) {
             audioRef.current.pause();
@@ -24,11 +40,12 @@ const MoodSongs = ({ Songs }) => {
         } else {
             audioRef.current.pause();
             audioRef.current.currentTime = 0;
-            audioRef.current.src = Songs[index].audio;
+            audioRef.current.src = selectedSong.audio;
             audioRef.current.play().catch((error) => {
-                console.log("Audio play interrupted or blocked:", error);
+                console.warn("Audio play failed:", error);
             });
             setIsPlayingIndex(index);
+            setProgress(0);
         }
     };
 
@@ -38,20 +55,27 @@ const MoodSongs = ({ Songs }) => {
             <div className={styles.songList}>
                 {Array.isArray(Songs) && Songs.length > 0 ? (
                     Songs.map((song, index) => (
-                        <div key={index} className={styles.songBar}>
-                            <div className="title">
-                                <p>{song.title}</p>
-                                <p>{song.artist}</p>
+                        <div
+                            key={index}
+                            className={`${styles.songBar} ${isPlayingIndex === index ? styles.playing : ""}`}
+                            style={{
+                                '--progress': isPlayingIndex === index ? progress : 0
+                            }}
+                        >
+                            <div className={styles.title}>
+                                <p className={styles.songTitle}>{song.title}</p>
+                                <p className={styles.songArtist}>{song.artist}</p>
                             </div>
-                            <div className="play-pose-btn">
+                            <div>
                                 <button
+                                    className={styles["play-pause-btn"]}
                                     onClick={() => handlePlayPause(index)}
                                     aria-label={isPlayingIndex === index ? "Pause song" : "Play song"}
                                 >
                                     {isPlayingIndex === index ? (
-                                        <i className="ri-pause-circle-fill"></i>
+                                        <i className="ri-pause-circle-fill icon"></i>
                                     ) : (
-                                        <i className="ri-play-circle-fill"></i>
+                                        <i className="ri-play-circle-fill icon"></i>
                                     )}
                                 </button>
                             </div>
@@ -64,7 +88,10 @@ const MoodSongs = ({ Songs }) => {
 
             <audio
                 ref={audioRef}
-                onEnded={() => setIsPlayingIndex(null)}
+                onEnded={() => {
+                    setIsPlayingIndex(null);
+                    setProgress(0);
+                }}
                 preload="metadata"
             />
         </div>

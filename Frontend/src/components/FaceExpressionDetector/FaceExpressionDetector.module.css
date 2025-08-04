@@ -74,42 +74,6 @@
 }
 
 
-/* .camera-space {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 2rem;
-	background: #2f2f2f;
-	border-radius: 1rem;
-	width: 68%;
-	margin: auto;
-	transition: width 0.3s;
-}
-
-.camera {
-	background: #1a1a1a;
-	width: 600px;
-	height: 400px;
-	transform: scaleX(-1);
-	object-fit: cover;
-	border-radius: 1rem;
-	transition: width 0.3s, height 0.3s;
-}
-
-.camera-desc {
-	width: 400px;
-	height: 360px;
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
-	flex-direction: column;
-	gap: 2rem;
-	border: 2px solid transparent;
-	border-radius: 1rem;
-	padding: 1rem;
-	transition: width 0.3s, height 0.3s, gap 0.3s;
-} */
-
 /* Tablet screens (≤ 900px) */
 @media (max-width: 900px) {
 	.camera-space {
@@ -140,7 +104,7 @@
 		padding: 0.5rem 0;
 	}
 	.camera {
-		width: 96vw;
+		width: 82vw;
 		max-width: 320px;
 		height: 180px;
 		border-radius: 0.6rem;

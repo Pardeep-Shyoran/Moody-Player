@@ -1,33 +1,3 @@
-/* .moodSongs{
-    background: #2f2f2f;
-    border-radius: 1rem;
-	width: 69%;
-}
-
-.songHead{
-    margin: 12px;
-}
-
-.songList{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.songBar{
-    background: #1a1a1a;
-    width: 90%;
-    border-radius: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 2rem;
-}
- */
-
 .moodSongs {
 	background: #2f2f2f;
 	border-radius: 1rem;
@@ -60,8 +30,43 @@
 	justify-content: space-between;
 	padding: 1rem 2rem;
 	box-sizing: border-box;
-	transition: padding 0.3s, width 0.3s;
+	border-left: 4px solid transparent;
+	transition: background-color 0.3s ease;
+	background-image: linear-gradient(
+        to right,
+        #3a3a3aec calc(var(--progress, 0) * 100%),
+        #1a1a1a calc(var(--progress, 0) * 100%)
+    );
+    transition: background-image 0.3s ease;
 }
+
+.play-pause-btn{
+	background: transparent;
+	border: none;
+	color: #fff;
+	cursor: pointer;
+	font-size: 2.4rem;
+	transition: color 0.3s;
+}
+.songBar .play-pause-btn:hover {
+	color: #929292;
+}
+
+.songTitle{
+	font-size: 1.2rem;
+	color: #fff;
+}
+
+.songArtist{
+	font-size: .9rem;
+	color: #b3b3b3;
+}
+
+.playing {
+	background-color: #d0f0c0;
+	border-left: 4px solid #28a745;
+}
+
 
 /* Tablets (screen <= 900px) */
 @media (max-width: 900px) {
@@ -95,7 +100,7 @@
 		margin-bottom: 12px;
 	}
 	.songBar {
-		flex-direction: column;
+		/* flex-direction: column; */
 		align-items: flex-start;
 		width: 100%;
 		padding: 0.7rem 0.7rem;
