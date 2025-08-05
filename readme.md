@@ -102,7 +102,7 @@ npm run dev
 
 ## 📁 Folder Structure
 ```
-moodswinger/
+Moody-Player/
 ├── backend/
 │   └── src, models, routes, db, etc.
 ├── frontend/
