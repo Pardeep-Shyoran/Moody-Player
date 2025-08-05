@@ -141,6 +141,7 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## 📬 Contact
 
-Made with ❤️ by [Pardeep Shyoran](www.linkedin.com/in/pardeepshyoran)  
+Made with ❤️ by [Pardeep Shyoran](https://www.linkedin.com/in/pardeepshyoran)  
 Feel free to connect and share feedback!
+
 
