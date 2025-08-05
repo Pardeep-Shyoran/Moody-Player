@@ -1,5 +1,7 @@
 # 🎧 MoodSwinger – A Mood-Based Music Player
 
+![Happy Mood](./screenshots/cover-image.png)
+
 MoodSwinger is a smart web-based music player that detects your mood using facial expressions and plays music accordingly. Built with modern web technologies, it bridges the gap between emotion and music using AI-powered expression recognition.
 
 ---
